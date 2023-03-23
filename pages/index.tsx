@@ -1,12 +1,20 @@
 "use client";
 
-import {
-  Friend,
-  Groop,
-  Notification,
-  MeetingSessionStart,
-} from "@qamarz/gv-web-sdk";
+import dynamic from "next/dynamic";
 import { useState } from "react";
+
+const Friend = dynamic(() =>
+  import("@qamarz/gv-web-sdk").then((module) => module.Friend)
+);
+const Notification = dynamic(() =>
+  import("@qamarz/gv-web-sdk").then((module) => module.Notification)
+);
+const Groop = dynamic(() =>
+  import("@qamarz/gv-web-sdk").then((module) => module.Groop)
+);
+const MeetingSessionStart = dynamic(() =>
+  import("@qamarz/gv-web-sdk").then((module) => module.MeetingSessionStart)
+);
 
 type ShowComponent =
   | "friend"
