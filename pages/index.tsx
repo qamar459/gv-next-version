@@ -1,20 +1,5 @@
-"use client";
-
-import dynamic from "next/dynamic";
-import { useState } from "react";
-
-const Friend = dynamic(() =>
-  import("@qamarz/gv-web-sdk").then((module) => module.Friend)
-);
-const Notification = dynamic(() =>
-  import("@qamarz/gv-web-sdk").then((module) => module.Notification)
-);
-const Groop = dynamic(() =>
-  import("@qamarz/gv-web-sdk").then((module) => module.Groop)
-);
-const MeetingSessionStart = dynamic(() =>
-  import("@qamarz/gv-web-sdk").then((module) => module.MeetingSessionStart)
-);
+import { useEffect, useState } from "react";
+import { Friend, MeetingContainer } from "@qamarz/gv-web-sdk";
 
 type ShowComponent =
   | "friend"
@@ -25,6 +10,7 @@ type ShowComponent =
 
 export default function Dashboard() {
   const [showComponent, setShowComponent] = useState<ShowComponent>("");
+
   return (
     <>
       <div className="dashMarginTop"></div>
@@ -63,18 +49,7 @@ export default function Dashboard() {
           isOpen={showComponent === "friend"}
           onClose={() => setShowComponent("")}
         />
-        <Groop
-          isOpen={showComponent === "groop"}
-          onClose={() => setShowComponent("")}
-        />
-        <Notification
-          isOpen={showComponent === "notification"}
-          onClose={() => setShowComponent("")}
-        />
-        <MeetingSessionStart
-          isOpen={showComponent === "meetingSessionStart"}
-          onClose={() => setShowComponent("")}
-        />
+        <MeetingContainer />
       </div>
     </>
   );
