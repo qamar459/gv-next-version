@@ -1,5 +1,11 @@
-import { useEffect, useState } from "react";
-import { Friend, MeetingContainer } from "@qamarz/gv-web-sdk";
+import { useState } from "react";
+import { Friend } from "@qamarz/gv-web-sdk";
+import dynamic from "next/dynamic";
+
+const MeetingContainer = dynamic(
+  () => import("@qamarz/gv-web-sdk").then((mod) => mod.MeetingContainer),
+  { ssr: false }
+);
 
 type ShowComponent =
   | "friend"
