@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Friend } from "@qamarz/gv-web-sdk";
+import { Friend, Notification, Groop } from "@qamarz/gv-web-sdk";
 import dynamic from "next/dynamic";
 
-const MeetingContainer = dynamic(
-  () => import("@qamarz/gv-web-sdk").then((mod) => mod.MeetingContainer),
+const MeetingSessionStart = dynamic(
+  () => import("@qamarz/gv-web-sdk").then((mod) => mod.MeetingSessionStart),
   { ssr: false }
 );
 
@@ -55,7 +55,18 @@ export default function Dashboard() {
           isOpen={showComponent === "friend"}
           onClose={() => setShowComponent("")}
         />
-        <MeetingContainer />
+        <Notification
+          isOpen={showComponent === "notification"}
+          onClose={() => setShowComponent("")}
+        />
+        <Groop
+          isOpen={showComponent === "groop"}
+          onClose={() => setShowComponent("")}
+        />
+        <MeetingSessionStart
+          isOpen={showComponent === "meetingSessionStart"}
+          onClose={() => setShowComponent("")}
+        />
       </div>
     </>
   );
