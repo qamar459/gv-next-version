@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useStateIfMounted } from 'use-state-if-mounted';
+import React, { useEffect } from "react";
 
+import { useStateIfMounted } from "use-state-if-mounted";
 
-import { useApi } from '@qamarz/gv-web-sdk';
+import { useApi } from "@qamarz/gv-web-sdk";
 
 interface GetTokenResponse {
-  token: string
+  token: string;
 }
 
 interface UserInfo {
@@ -25,29 +24,27 @@ interface UserInfo {
 export function SignIn() {
   const [user, setUser] = useStateIfMounted<UserInfo | null>(null);
   const [token, setToken] = useStateIfMounted<GetTokenResponse | null>(null);
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [isDisabled, setIsDisabled] = React.useState(true);
   //const navigate = useNavigate();
 
-
-
   const handleLoginSuccess = (data: GetTokenResponse) => {
-    localStorage.setItem('standalone_token', data.token);
-    console.log('standalone_login_response', data);
-    setToken({token: data?.token});
+    localStorage.setItem("standalone_token", data.token);
+    console.log("standalone_login_response", data);
+    setToken({ token: data?.token });
   };
 
   const handleLoginFail = (resp: any) => {
-    console.log('login fail resp: ', resp);
-    console.log('error', 'invalid credentials');
+    console.log("login fail resp: ", resp);
+    console.log("error", "invalid credentials");
   };
 
   const handleUserSuccess = (data: UserInfo) => {
     if (!data) {
       //navigate('/');
     } else {
-      console.log('user-data:', data);
+      console.log("user-data:", data);
       setUser(data);
       getToken.execute({
         firstName: data.firstName,
@@ -55,56 +52,57 @@ export function SignIn() {
         email: data.email,
         username: data.username,
         countryCode: data.countryCode,
-        phoneNumber: data.phoneNumber
+        phoneNumber: data.phoneNumber,
       });
       //localStorage.setItem('loggedName', data.firstName);
     }
-  }; 
+  };
 
   useEffect(() => {
-    if(token?.token){
+    if (token?.token) {
       getUser.execute();
     }
-  }, [token])
+  }, [token]);
 
   const handleUserFail = () => {
     //navigate('/');
-  }
+  };
 
   const handleTokenSuccess = (data: GetTokenResponse) => {
-    console.log('sdk_data', data);
-    if(data.token){
-      localStorage.setItem('sdk_token', data.token);
+    console.log("sdk_data", data);
+    if (data.token) {
+      localStorage.setItem("sdk_token", data.token);
       location.href = window.location.origin;
       //navigate('/');
     }
-    console.log('error', 'Something went wrong!')
+    console.log("error", "Something went wrong!");
   };
 
   const handleTokenFail = (error: Error) => {
     console.log(error);
     //navigate('/');
-  }
+  };
 
   const login = useApi({
-    api: 'standalone',
-    endpoint: 'login',
-    method: 'post',
+    api: "standalone",
+    endpoint: "login",
+    method: "post",
     onResult: handleLoginSuccess,
     onFail: handleLoginFail,
     useAuth: false,
   });
+
   const getUser = useApi({
-    api: 'standalone',
-    endpoint: 'user/get/info',
+    api: "standalone",
+    endpoint: "user/get/info",
     onResult: handleUserSuccess,
     onFail: handleUserFail,
   });
 
   const getToken = useApi({
-    api: 'api',
-    method: 'post',
-    endpoint: 'get-token',
+    api: "api",
+    method: "post",
+    endpoint: "get-token",
     onResult: handleTokenSuccess,
     onFail: handleTokenFail,
     useAuth: false,
@@ -112,13 +110,12 @@ export function SignIn() {
 
   //console.log('get-token', getToken);
 
-
   function handleSubmit(event: any) {
     event.preventDefault();
-    console.log('username:password', username + ':' + password)
-    login.execute({ username: username, password: password})
-    setUsername('');
-    setPassword('');
+    console.log("username:password", username + ":" + password);
+    login.execute({ username: username, password: password });
+    setUsername("");
+    setPassword("");
     setIsDisabled(true);
   }
 
@@ -131,7 +128,7 @@ export function SignIn() {
   }
 
   useEffect(() => {
-    if (password !== '' && username !== '') {
+    if (password !== "" && username !== "") {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
@@ -163,6 +160,6 @@ export function SignIn() {
       </button>
     </form>
   );
-};
+}
 
 export default SignIn;
