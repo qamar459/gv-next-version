@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-
 import { useStateIfMounted } from "use-state-if-mounted";
-
-import { useApi } from "@qamarz/gv-web-sdk";
+import { useAlert, useApi } from "@qamarz/gv-web-sdk";
 
 interface GetTokenResponse {
   token: string;
@@ -27,15 +25,15 @@ export function SignIn() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [isDisabled, setIsDisabled] = React.useState(true);
-  //const navigate = useNavigate();
+  const { showAlert } = useAlert();
 
   const handleLoginSuccess = (data: GetTokenResponse) => {
     localStorage.setItem("standalone_token", data.token);
-    console.log("standalone_login_response", data);
     setToken({ token: data?.token });
   };
 
   const handleLoginFail = (resp: any) => {
+    showAlert("login fail", "danger");
     console.log("login fail resp: ", resp);
     console.log("error", "invalid credentials");
   };
@@ -54,7 +52,6 @@ export function SignIn() {
         countryCode: data.countryCode,
         phoneNumber: data.phoneNumber,
       });
-      //localStorage.setItem('loggedName', data.firstName);
     }
   };
 
@@ -64,23 +61,17 @@ export function SignIn() {
     }
   }, [token]);
 
-  const handleUserFail = () => {
-    //navigate('/');
-  };
+  const handleUserFail = () => {};
 
   const handleTokenSuccess = (data: GetTokenResponse) => {
-    console.log("sdk_data", data);
     if (data.token) {
       localStorage.setItem("sdk_token", data.token);
       location.href = window.location.origin;
-      //navigate('/');
-    }
-    console.log("error", "Something went wrong!");
+    } else console.log("error", "Something went wrong!");
   };
 
   const handleTokenFail = (error: Error) => {
     console.log(error);
-    //navigate('/');
   };
 
   const login = useApi({
@@ -108,11 +99,8 @@ export function SignIn() {
     useAuth: false,
   });
 
-  //console.log('get-token', getToken);
-
   function handleSubmit(event: any) {
     event.preventDefault();
-    console.log("username:password", username + ":" + password);
     login.execute({ username: username, password: password });
     setUsername("");
     setPassword("");
