@@ -947,10 +947,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@qamarz/gv-web-sdk@^1.0.98-beta.64":
-  version "1.0.98-beta.64"
-  resolved "https://registry.yarnpkg.com/@qamarz/gv-web-sdk/-/gv-web-sdk-1.0.98-beta.64.tgz#b5911d9bf4d15c8c2ac92b43505d3391580df6cd"
-  integrity sha512-yJp1vKRrrmLUq4bA/5yA9zGbRhbXoX+mNcLJ+p1ubfZkM0LjjSODp1jB0CfCG4fRd8z2/ZTy1AOVx165Kfujwg==
+"@qamarz/gv-web-sdk@^1.0.98-beta.71":
+  version "1.0.98-beta.71"
+  resolved "https://registry.yarnpkg.com/@qamarz/gv-web-sdk/-/gv-web-sdk-1.0.98-beta.71.tgz#e197a11fc57f2cc71d9233fb741455538d79ba6c"
+  integrity sha512-DRT27COE54GIiFObnNb3eWtn7Ba8eV+RWKw+AS7r+SReQENphYUusIYqPYUdm2cjDU5bG6RejgW+ayeGs8RGMw==
   dependencies:
     amazon-chime-sdk-js "^3.8.0"
     axios "^0.27.2"
