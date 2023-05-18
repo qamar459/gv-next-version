@@ -942,10 +942,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@qamarz/gv-web-sdk@^1.0.98-beta.103":
-  version "1.0.98-beta.103"
-  resolved "https://registry.yarnpkg.com/@qamarz/gv-web-sdk/-/gv-web-sdk-1.0.98-beta.103.tgz#f281b35482f994735ab1f5ed1231e520b13b4f64"
-  integrity sha512-J4E0w2ASWBbzVdBRoCgmVFzVjWRyQ3jXmJtFRQWKjJsYXEQtdwi1pQYNnGAkAxiKtcGrFJ/h9h0fUTl644VZCA==
+"@qamarz/gv-web-sdk@1.0.101-beta.10":
+  version "1.0.101-beta.10"
+  resolved "https://registry.yarnpkg.com/@qamarz/gv-web-sdk/-/gv-web-sdk-1.0.101-beta.10.tgz#2e6f07420ca561a58386bae2b81b6d956c27813e"
+  integrity sha512-NkbCdnj94rL/L0cIITLXCQrAyFCkfl6YpqMa+dkXUyUH8BfnhlxnfTt8e2IpuIQ7kpWCHOp7atodpKsKp+MOTw==
   dependencies:
     amazon-chime-sdk-js "^3.8.0"
     axios "^0.27.2"
