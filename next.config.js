@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   env: {
     REACT_APP_API: "https://manyview-sdk-dev.groopview.co/dev/",
     REACT_APP_CLIENT_KEY: "d46d7c2348b19a77130e",
