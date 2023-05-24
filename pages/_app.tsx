@@ -11,11 +11,20 @@ const Alert = dynamic(
   { ssr: false }
 );
 
+const SdkProvider = dynamic(
+  () => import("@qamarz/gv-web-sdk").then((mod) => mod.SdkProvider),
+  { ssr: false }
+);
+
+const groopviewKey = process.env.REACT_APP_CLIENT_KEY || "";
+
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <AlertProvider>
-      <Alert />
-      <Component {...pageProps} />
-    </AlertProvider>
+    <SdkProvider groopviewKey={groopviewKey}>
+      <AlertProvider>
+        <Alert />
+        <Component {...pageProps} />
+      </AlertProvider>
+    </SdkProvider>
   );
 }
