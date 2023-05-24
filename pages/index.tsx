@@ -20,6 +20,10 @@ const Groop = dynamic(
   () => import("@qamarz/gv-web-sdk").then((mod) => mod.Groop),
   { ssr: false }
 );
+const UserPreference = dynamic(
+  () => import("@qamarz/gv-web-sdk").then((mod) => mod.UserPreference),
+  { ssr: false }
+);
 
 type ShowComponent =
   | "friend"
@@ -82,6 +86,7 @@ export default function Dashboard() {
           isOpen={showComponent === "meetingSessionStart"}
           onClose={() => setShowComponent("")}
         />
+        <UserPreference />
       </div>
     </>
   );
