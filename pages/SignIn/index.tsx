@@ -33,7 +33,7 @@ export function SignIn() {
   };
 
   const handleLoginFail = (resp: any) => {
-    showAlert("login fail", "danger");
+    showAlert("login fail", "error");
     console.log("login fail resp: ", resp);
     console.log("error", "invalid credentials");
   };
