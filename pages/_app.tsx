@@ -6,11 +6,6 @@ const AlertProvider = dynamic(
   { ssr: false }
 );
 
-const Alert = dynamic(
-  () => import("@qamarz/gv-web-sdk").then((mod) => mod.Alert),
-  { ssr: false }
-);
-
 const SdkProvider = dynamic(
   () => import("@qamarz/gv-web-sdk").then((mod) => mod.SdkProvider),
   { ssr: false }
@@ -22,7 +17,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SdkProvider groopviewKey={groopviewKey}>
       <AlertProvider>
-        <Alert />
         <Component {...pageProps} />
       </AlertProvider>
     </SdkProvider>
