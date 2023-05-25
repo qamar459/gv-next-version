@@ -16,7 +16,7 @@ const SdkProvider = dynamic(
   { ssr: false }
 );
 
-const groopviewKey = process.env.REACT_APP_CLIENT_KEY || "";
+const groopviewKey = process.env.GROOPVIEW_KEY || "";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
