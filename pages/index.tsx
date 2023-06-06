@@ -6,6 +6,11 @@ const MeetingSessionStart = dynamic(
   { ssr: false }
 );
 
+const FutureSession = dynamic(
+  () => import("@qamarz/gv-web-sdk").then((mod) => mod.FutureSession),
+  { ssr: false }
+);
+
 const Friend = dynamic(
   () => import("@qamarz/gv-web-sdk").then((mod) => mod.Friend),
   { ssr: false }
@@ -30,6 +35,7 @@ type ShowComponent =
   | "notification"
   | "groop"
   | "meetingSessionStart"
+  | "futureSession"
   | "";
 
 export default function Dashboard() {
@@ -68,6 +74,13 @@ export default function Dashboard() {
           >
             Start Meeting Session
           </button>
+          <button
+            type="button"
+            value="futureSession"
+            onClick={() => setShowComponent("futureSession")}
+          >
+            Future Gameplays
+          </button>
         </div>
         <Friend
           isOpen={showComponent === "friend"}
@@ -84,6 +97,10 @@ export default function Dashboard() {
         />
         <MeetingSessionStart
           isOpen={showComponent === "meetingSessionStart"}
+          onClose={() => setShowComponent("")}
+        />
+        <FutureSession
+          isOpen={showComponent === "futureSession"}
           onClose={() => setShowComponent("")}
         />
         <UserPreference />
