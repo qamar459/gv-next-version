@@ -30,8 +30,14 @@ const Groop = dynamic(
   () => import("@qamarz/gv-web-sdk").then((mod) => mod.Groop),
   { ssr: false }
 );
+
 const UserPreference = dynamic(
   () => import("@qamarz/gv-web-sdk").then((mod) => mod.UserPreference),
+  { ssr: false }
+);
+
+const PushNotifications = dynamic(
+  () => import("@qamarz/gv-web-sdk").then((mod) => mod.PushNotifications),
   { ssr: false }
 );
 
@@ -95,6 +101,7 @@ export default function Dashboard() {
             Meeting Join
           </button>
         </div>
+        <PushNotifications />
         <Friend
           isOpen={showComponent === "friend"}
           onClose={() => setShowComponent("")}
