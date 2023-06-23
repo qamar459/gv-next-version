@@ -36,11 +36,6 @@ const UserPreference = dynamic(
   { ssr: false }
 );
 
-const PushNotifications = dynamic(
-  () => import("@qamarz/gv-web-sdk").then((mod) => mod.PushNotifications),
-  { ssr: false }
-);
-
 type ShowComponent =
   | "friend"
   | "notification"
@@ -101,7 +96,6 @@ export default function Dashboard() {
             Meeting Join
           </button>
         </div>
-        <PushNotifications />
         <Friend
           isOpen={showComponent === "friend"}
           onClose={() => setShowComponent("")}
