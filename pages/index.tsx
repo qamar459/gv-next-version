@@ -112,6 +112,7 @@ export default function Dashboard() {
         <MeetingSessionStart
           isOpen={showComponent === "meetingSessionStart"}
           onClose={() => setShowComponent("")}
+          streamTitle="Grand Theft Auto: Vice City added"
         />
         <FutureSession
           isOpen={showComponent === "futureSession"}
