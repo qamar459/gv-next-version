@@ -52,6 +52,8 @@ export function SignIn() {
         countryCode: data.countryCode,
         phoneNumber: data.phoneNumber,
       });
+      localStorage.setItem('loggedName', data.firstName + ' ' +data.lastName);
+      localStorage.setItem('email', data.email);
     }
   };
 
